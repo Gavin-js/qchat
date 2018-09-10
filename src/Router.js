@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, NavigationEvents } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Chat from './views/Chat'
 
 class DetailsScreen extends React.Component {
     render() {
@@ -25,8 +26,8 @@ class HomeScreen extends React.Component {
                     onDidBlur={payload => console.log('did blur', payload)}
                 />
                 <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
+                    title="Go to Chat"
+                    onPress={() => this.props.navigation.navigate('Chat')}
                 />
             </View>
         );
@@ -50,6 +51,7 @@ class SettingsScreen extends React.Component {
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
     Details: DetailsScreen,
+    Chat,
 });
 
 const SettingsStack = createStackNavigator({
