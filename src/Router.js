@@ -1,67 +1,50 @@
-import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
-import { createBottomTabNavigator, createStackNavigator, NavigationEvents } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import React from 'react'
+import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { style2pt } from './utils'
+import Home from './views/Home'
 import Chat from './views/Chat'
+import User from './views/User'
 
-class DetailsScreen extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>Details!</Text>
-            </View>
-        );
-    }
-}
-
-class HomeScreen extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                {/* other code from before here */}
-                <NavigationEvents
-                    onWillFocus={payload => console.log('will focus', payload)}
-                    onDidFocus={payload => console.log('did focus', payload)}
-                    onWillBlur={payload => console.log('will blur', payload)}
-                    onDidBlur={payload => console.log('did blur', payload)}
-                />
-                <Button
-                    title="Go to Chat"
-                    onPress={() => this.props.navigation.navigate('Chat')}
-                />
-            </View>
-        );
-    }
-}
-
-class SettingsScreen extends React.Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                {/* other code from before here */}
-                <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
-            </View>
-        );
-    }
-}
 
 const HomeStack = createStackNavigator({
-    Home: HomeScreen,
-    Details: DetailsScreen,
+    Home: {
+        screen: Home,
+        navigationOptions: {
+          header: null,
+        },
+      },
     Chat,
-});
+})
 
-const SettingsStack = createStackNavigator({
-    Settings: SettingsScreen,
-    Details: DetailsScreen,
-});
+const UserStack = createStackNavigator({
+    User: {
+        screen: User,
+        navigationOptions: {
+          header: null,
+        },
+      },
+})
 
-export default createBottomTabNavigator({
-    Home: HomeStack,
-    Settings: SettingsStack,
+const RootStack = createBottomTabNavigator({
+    Home: {
+        screen: HomeStack,
+        navigationOptions: () => ({
+            tabBarLabel: 'Q聊',
+        })
+    },
+    Channel: {
+        screen: HomeStack,
+        navigationOptions: () => ({
+            tabBarLabel: '频道',
+        })
+    },
+    User: {
+        screen: UserStack,
+        navigationOptions: () => ({
+            tabBarLabel: '我的',
+        })
+    },
 },
     {
         navigationOptions: ({ navigation }) => ({
@@ -69,9 +52,11 @@ export default createBottomTabNavigator({
                 const { routeName } = navigation.state;
                 let iconName;
                 if (routeName === 'Home') {
-                    iconName = `ios-home`;
-                } else if (routeName === 'Settings') {
-                    iconName = `ios-settings`;
+                    iconName = `ios-chatbubbles`
+                } else if (routeName === 'Channel') {
+                    iconName = `ios-globe`
+                } else if (routeName === 'User') {
+                    iconName = `ios-contact`
                 }
 
                 // You can return any component that you like here! We usually use an
@@ -82,5 +67,18 @@ export default createBottomTabNavigator({
         tabBarOptions: {
             activeTintColor: 'tomato',
             inactiveTintColor: 'gray',
+            labelStyle: style2pt({
+              fontSize: 20,
+            }),
+            style: style2pt({
+              paddingTop: 14,
+              paddingBottom: 5,
+              height: 98,
+              backgroundColor: '#fff',
+            }),
         },
-    });
+    })
+
+    export default createSwitchNavigator({
+        RootStack,
+    })

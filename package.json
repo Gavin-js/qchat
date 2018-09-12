@@ -7,9 +7,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "antd-mobile-rn": "^2.2.1",
+    "js-md5": "^0.7.3",
+    "ramda": "^0.25.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-gifted-chat": "^0.4.3",
+    "react-native-material-kit": "^0.5.1",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.13.0",
     "react-navigation-redux-helpers": "^2.0.5",
