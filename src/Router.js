@@ -117,7 +117,7 @@ const RootStack = createBottomTabNavigator({
               backgroundColor: '#fff',
             }),
         },
-        initialRouteName: 'Channel',
+        initialRouteName: 'Home',
     })
 
     export default createSwitchNavigator({
