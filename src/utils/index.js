@@ -70,7 +70,7 @@ const genNavigation = (options) => {
 const removeHtmlTag = str => str.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '')
 
 const Color = {
-  Primary: '#2DD1E6',
+  Primary: 'tomato',
   RGBPrimary: '0, 193, 136',
   Line: '#F4F4F4',
   Desc: '#9b9b9b',

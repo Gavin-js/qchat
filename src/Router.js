@@ -1,20 +1,25 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { style2pt } from './utils'
 import Home from './views/Home'
+import Channel from './views/Channel'
 import Chat from './views/Chat'
 import User from './views/User'
 
 
 const HomeStack = createStackNavigator({
-    Home: {
-        screen: Home,
-        navigationOptions: {
-          header: null,
-        },
-      },
+    Home,
     Chat,
+})
+
+const ChannelStack = createStackNavigator({
+    Channel: {
+        screen: Channel,
+        navigationOptions: {
+            header: null,
+        },
+    },
 })
 
 const UserStack = createStackNavigator({
@@ -25,6 +30,41 @@ const UserStack = createStackNavigator({
         },
       },
 })
+const ChannelTab = createMaterialTopTabNavigator({
+    Channel: {
+        screen: ChannelStack,
+        navigationOptions: () => ({
+            tabBarLabel: '精华',
+        })
+    },
+    Channel1: {
+        screen: ChannelStack,
+        navigationOptions: () => ({
+            tabBarLabel: '广场',
+        })
+    },
+},{
+    tabBarOptions: {
+        indicatorStyle: {
+            height:0,
+        },
+        pressOpacity: 1,
+        activeTintColor: 'tomato',
+        inactiveTintColor: '#333333',
+        labelStyle: style2pt({
+          fontSize: 30,
+        }),
+        tabStyle: style2pt({
+            width:150,
+        }),
+        style: style2pt({
+          paddingTop: 20,
+          paddingBottom: 5,
+          height: 100,
+          backgroundColor: '#fff',
+        }),
+    },
+})
 
 const RootStack = createBottomTabNavigator({
     Home: {
@@ -34,7 +74,7 @@ const RootStack = createBottomTabNavigator({
         })
     },
     Channel: {
-        screen: HomeStack,
+        screen: ChannelTab,
         navigationOptions: () => ({
             tabBarLabel: '频道',
         })
@@ -56,12 +96,12 @@ const RootStack = createBottomTabNavigator({
                 } else if (routeName === 'Channel') {
                     iconName = `ios-globe`
                 } else if (routeName === 'User') {
-                    iconName = `ios-contact`
+                    iconName = `ios-person`
                 }
 
                 // You can return any component that you like here! We usually use an
                 // icon component from react-native-vector-icons
-                return <Ionicons name={iconName} size={25} color={tintColor} />;
+                return <Ionicons name={iconName} size={25} color={tintColor} />
             },
         }),
         tabBarOptions: {
@@ -77,6 +117,7 @@ const RootStack = createBottomTabNavigator({
               backgroundColor: '#fff',
             }),
         },
+        initialRouteName: 'Channel',
     })
 
     export default createSwitchNavigator({

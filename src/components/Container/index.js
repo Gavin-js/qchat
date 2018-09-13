@@ -5,10 +5,12 @@ import { NavigationEvents } from 'react-navigation'
 
 const Container = () => {
   return (Wrapcomponent) => class Container extends PureComponent {
+    static navigationOptions = Wrapcomponent.navigationOptions
     bindEvent = (event) => {
       this.refs.container[event] && this.refs.container[event]()
     }
     render(){
+      
       return <View style={{flex: 1}}>
                 <Wrapcomponent ref="container"/>
                 <NavigationEvents
