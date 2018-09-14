@@ -12,7 +12,6 @@ const HomeStack = createStackNavigator({
     Home,
     Chat,
 })
-
 const ChannelStack = createStackNavigator({
     Channel: {
         screen: Channel,
