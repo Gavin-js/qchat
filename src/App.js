@@ -1,13 +1,13 @@
 import React from 'react'
 import { Provider, connect } from 'react-redux'
+import thunk from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import {
   reduxifyNavigator,
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers'
-
+import { logger } from 'redux-logger'
 import AppReducer from './reducers'
-
 import Router from './Router'
 
 
@@ -16,16 +16,15 @@ const middleware = createReactNavigationReduxMiddleware(
   state => state.state
 )
 
-const store = createStore(AppReducer, applyMiddleware(middleware))
+const store = createStore(AppReducer, applyMiddleware(middleware, thunk, logger))
 
 
 const AppWithNavigationState = reduxifyNavigator(Router, 'root')
 
-const mapStateToProps = state => ({
-  state: state.state,
-})
 
-const AppNavigator = connect(mapStateToProps)(AppWithNavigationState)
+const AppNavigator = connect(state => ({
+  state: state.state,
+}))(AppWithNavigationState)
 
 class Root extends React.Component {
   render() {

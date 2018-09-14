@@ -3,6 +3,7 @@ package com.qchat;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
 import com.github.xinthink.rnmk.ReactMaterialKitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
             new SplashScreenPackage(),
             new ReactMaterialKitPackage(),
             new VectorIconsPackage()

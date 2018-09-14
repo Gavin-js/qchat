@@ -91,7 +91,8 @@
     "func-names": [0],
     "guard-for-in": [0],
     "react/no-unused-state": [0],
-    "prefer-promise-reject-errors": [0]
+    "prefer-promise-reject-errors": [0],
+    "no-unused-expressions": [2, { "allowShortCircuit": true }]
   },
   "parserOptions": {
     "ecmaFeatures": {
