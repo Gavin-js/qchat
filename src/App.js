@@ -1,32 +1,31 @@
-import React from 'react';
-import { Provider, connect } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import React from 'react'
+import { Provider, connect } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 import {
   reduxifyNavigator,
   createReactNavigationReduxMiddleware,
-} from 'react-navigation-redux-helpers';
+} from 'react-navigation-redux-helpers'
 
-import AppReducer from './reducers';
+import AppReducer from './reducers'
 
 import Router from './Router'
-
 
 
 const middleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.state
-);
+)
 
-const store = createStore(AppReducer, applyMiddleware(middleware));
+const store = createStore(AppReducer, applyMiddleware(middleware))
 
 
-const AppWithNavigationState = reduxifyNavigator(Router, 'root');
+const AppWithNavigationState = reduxifyNavigator(Router, 'root')
 
 const mapStateToProps = state => ({
   state: state.state,
-});
+})
 
-const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
+const AppNavigator = connect(mapStateToProps)(AppWithNavigationState)
 
 class Root extends React.Component {
   render() {
@@ -34,7 +33,7 @@ class Root extends React.Component {
       <Provider store={store}>
         <AppNavigator />
       </Provider>
-    );
+    )
   }
 }
 
