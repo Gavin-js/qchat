@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import { createNavigationReducer } from 'react-navigation-redux-helpers'
-import { NavigationActions } from 'react-navigation'
+// import { NavigationActions } from 'react-navigation'
 import Router from '../Router'
 import auth from './auth'
+import register from './register'
 
 // Start with two routes: The Main screen, with the Login screen on top.
 // const firstAction = Router.router.getActionForPathAndParams('Home');
@@ -48,8 +49,9 @@ import auth from './auth'
 // }
 
 const reducer = combineReducers({
-    state: createNavigationReducer(Router),
-    auth,
+  state: createNavigationReducer(Router),
+  auth,
+  register,
 })
 
 export default reducer

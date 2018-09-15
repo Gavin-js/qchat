@@ -2,17 +2,22 @@ import React from 'react'
 import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { style2pt } from './utils'
+import AuthLoading from './views/AuthLoading'
 import Home from './views/Home'
+import MailList from './views/MailList'
 import Channel from './views/Channel'
 import Chat from './views/Chat'
 import User from './views/User'
+import Login from './views/Login'
+import Register from './views/Register'
 
 
 const HomeStack = createStackNavigator({
   Home,
   Chat,
+  MailList,
 }, {
-  initialRouteName: 'Home',
+  initialRouteName: 'MailList',
 })
 const ChannelStack = createStackNavigator({
   Channel: {
@@ -61,8 +66,11 @@ const ChannelTab = createMaterialTopTabNavigator({
     style: style2pt({
       paddingTop: 20,
       paddingBottom: 5,
-      height: 100,
+      height: 110,
       backgroundColor: '#fff',
+      borderBottomWidth: 0,
+      elevation: 0,
+      shadowOpacity: 0,
     }),
   },
 })
@@ -99,7 +107,7 @@ const RootStack = createBottomTabNavigator({
       if (routeName === 'Home') {
         iconName = 'ios-chatbubbles'
       } else if (routeName === 'Channel') {
-        iconName = 'ios-globe'
+        iconName = 'ios-radio'
       } else if (routeName === 'User') {
         iconName = 'ios-person'
       }
@@ -125,6 +133,25 @@ const RootStack = createBottomTabNavigator({
   initialRouteName: 'Home',
 })
 
+const AuthStack = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Register: {
+    screen: Register,
+    navigationOptions: {
+      header: null,
+    },
+  },
+})
+
 export default createSwitchNavigator({
-  RootStack,
+  AuthLoading,
+  App: RootStack,
+  Auth: AuthStack,
+}, {
+  initialRouteName: 'AuthLoading',
 })

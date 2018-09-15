@@ -40,6 +40,7 @@
     "react-native": "0.56.0",
     "react-native-fs": "^2.11.15",
     "react-native-material-kit": "^0.5.1",
+    "react-native-tab-view": "^1.0.2",
     "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^2.13.0",
     "react-navigation-redux-helpers": "^2.0.5",
