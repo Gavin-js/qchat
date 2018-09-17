@@ -10,7 +10,7 @@ import styles from './styles'
 
 export default class MailList extends React.Component {
   static navigationOptions = genNavigation(({ navigation }) => ({
-    title: '频道',
+    title: '查找',
     headerLeft: <Ionicons name="ios-arrow-back" size={25} color="#333" onPress={() => navigation.goBack()} style={{ marginLeft: 10 }} />,
     headerRight: <Ionicons name="ios-person-add" size={25} color="#333" style={{ marginRight: 10 }} />,
     headerStyle: {
@@ -22,8 +22,8 @@ export default class MailList extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'distillat', title: '精选' },
-      { key: 'posts', title: '广场' },
+      { key: 'findperson', title: '找人' },
+      { key: 'findgroup', title: '找群' },
     ],
   }
 

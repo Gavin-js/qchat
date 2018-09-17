@@ -6,9 +6,9 @@ import { genNavigation } from '../../utils'
 import styles from './styles'
 
 class PageComponent extends Component {
-    static navigationOptions = genNavigation(({ navigation }) => ({
-      title: '消息',
-      headerLeft: <Ionicons name="ios-people" size={25} onPress={() => navigation.navigate('MailList')} color="#333" style={{ marginLeft: 10 }} />,
+    static navigationOptions = genNavigation(() => ({
+      title: '粉丝',
+      headerLeft: <Ionicons name="ios-people" size={25} color="#333" style={{ marginLeft: 10 }} />,
       headerRight: <Ionicons name="ios-add" size={28} color="#333" style={{ marginRight: 10 }} />,
     }))
     onWillBlur = () => {
@@ -22,18 +22,17 @@ class PageComponent extends Component {
       return (
         <View style={styles.container}>
           <StatusBar.Dark />
-          <View style={styles.messages}>
+          <View style={styles.fans}>
             <TouchableOpacity
-              style={styles.messageItem}
+              style={styles.fanItem}
               onPress={() => navigation.navigate('Chat', { uid: 'Q聊官方' })}
             >
               <View style={styles.imageWrap}>
                 <Image style={styles.image} source={require('../../assets/qchat.png')} />
               </View>
-              <View style={styles.messageCon}>
-                <Text style={styles.messageTitle}>Q聊官方</Text>
-                <Text style={styles.messageDesc}>欢迎来到Q聊</Text>
-                <Text style={styles.time}>昨天</Text>
+              <View style={styles.fanCon}>
+                <Text style={styles.fanTitle}>Q聊官方</Text>
+                <Text style={styles.fanDesc}>欢迎来到Q聊</Text>
               </View>
             </TouchableOpacity>
           </View>

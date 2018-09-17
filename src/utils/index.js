@@ -43,7 +43,8 @@ const NavigationOptions = {
     backgroundColor: '#fff',
     paddingTop: Platform.OS === 'ios' ? 0 : 40,
     shadowColor: 'rgba(0,0,0,0.1)',
-    elevation: 2,
+    elevation: 0,
+    shadowOpacity: 0,
   }),
   headerTintColor: '#333',
   headerTitleStyle: style2pt({

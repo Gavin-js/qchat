@@ -7,14 +7,14 @@ export default StyleSheet.create(style2pt({
     backgroundColor: '#fff',
   },
   tabBar: {
-    height: 90,
+    height: 70,
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderBottomColor: Color.Border,
     borderBottomWidth: 1,
   },
   tabItem: {
-    height: 90,
+    height: 50,
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 25,

@@ -1,11 +1,13 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator, createMaterialTopTabNavigator } from 'react-navigation'
+import { createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { style2pt } from './utils'
 import AuthLoading from './views/AuthLoading'
 import Home from './views/Home'
+import Find from './views/Find'
 import MailList from './views/MailList'
 import Channel from './views/Channel'
+import PostDetail from './views/PostDetail'
 import Chat from './views/Chat'
 import User from './views/User'
 import Login from './views/Login'
@@ -16,8 +18,9 @@ const HomeStack = createStackNavigator({
   Home,
   Chat,
   MailList,
+  Find,
 }, {
-  initialRouteName: 'MailList',
+  initialRouteName: 'Find',
 })
 const ChannelStack = createStackNavigator({
   Channel: {
@@ -26,6 +29,9 @@ const ChannelStack = createStackNavigator({
       header: null,
     },
   },
+  PostDetail,
+}, {
+  initialRouteName: 'Channel',
 })
 
 const UserStack = createStackNavigator({
@@ -36,44 +42,7 @@ const UserStack = createStackNavigator({
     },
   },
 })
-const ChannelTab = createMaterialTopTabNavigator({
-  Channel: {
-    screen: ChannelStack,
-    navigationOptions: () => ({
-      tabBarLabel: '精华',
-    }),
-  },
-  Channel1: {
-    screen: ChannelStack,
-    navigationOptions: () => ({
-      tabBarLabel: '广场',
-    }),
-  },
-}, {
-  tabBarOptions: {
-    indicatorStyle: {
-      height: 0,
-    },
-    pressOpacity: 1,
-    activeTintColor: 'tomato',
-    inactiveTintColor: '#333333',
-    labelStyle: style2pt({
-      fontSize: 30,
-    }),
-    tabStyle: style2pt({
-      width: 150,
-    }),
-    style: style2pt({
-      paddingTop: 20,
-      paddingBottom: 5,
-      height: 110,
-      backgroundColor: '#fff',
-      borderBottomWidth: 0,
-      elevation: 0,
-      shadowOpacity: 0,
-    }),
-  },
-})
+
 
 const RootStack = createBottomTabNavigator({
   Home: {
@@ -87,10 +56,14 @@ const RootStack = createBottomTabNavigator({
     },
   },
   Channel: {
-    screen: ChannelTab,
-    navigationOptions: () => ({
-      tabBarLabel: '频道',
-    }),
+    screen: ChannelStack,
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index]
+      return {
+        tabBarLabel: '频道',
+        tabBarVisible: routeName === 'Channel',
+      }
+    },
   },
   User: {
     screen: UserStack,
