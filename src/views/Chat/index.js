@@ -12,7 +12,7 @@ class Chat extends React.Component {
       headerRight: <Ionicons name="ios-person" size={25} color="#333" style={{ marginRight: 10 }} />,
     }))
     state = {
-      chatInputHeight: 80,
+      chatInputHeight: 100,
     }
     componentWillMount() {
       AuroraIMUIController.addMessageListDidLoadListener(() => {

@@ -20,7 +20,7 @@ const HomeStack = createStackNavigator({
   MailList,
   Find,
 }, {
-  initialRouteName: 'Find',
+  initialRouteName: 'Home',
 })
 const ChannelStack = createStackNavigator({
   Channel: {

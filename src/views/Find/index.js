@@ -1,21 +1,68 @@
 import React from 'react'
-import { View, TouchableOpacity, Animated } from 'react-native'
+import { View, TouchableOpacity, Animated, Text } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { genNavigation, Color } from '../../utils'
-import DistillatPosts from '../DistillatPosts'
-import Posts from '../Posts'
+import { TextField } from '../../components'
 import styles from './styles'
 
+
+const FindPerson = () => (
+  <View style={styles.container}>
+    <View style={styles.textField}>
+      <TextField
+        sufix={<Ionicons name="ios-search" size={25} color={Color.Primary} />}
+        inputProps={{
+          underlineEnabled: false,
+          underlineSize: 0,
+          placeholder: 'Q聊ID',
+        }}
+      />
+    </View>
+    <View style={styles.findWrap}>
+      <View style={styles.findItem}>
+        <View style={styles.phoneIcon}><Ionicons name="ios-phone-portrait" size={20} color="#fff" /></View>
+        <Text style={styles.findItemText}>添加手机联系人</Text>
+      </View>
+      <View style={styles.findItem}>
+        <View style={styles.scanIcon}><Ionicons name="ios-qr-scanner" size={20} color="#fff" /></View>
+        <Text style={styles.findItemText}>扫一扫</Text>
+      </View>
+    </View>
+  </View>
+)
+
+const FindGroup = () => (
+  <View style={styles.container}>
+    <View style={styles.textField}>
+      <TextField
+        sufix={<Ionicons name="ios-search" size={25} color={Color.Primary} />}
+        inputProps={{
+          underlineEnabled: false,
+          underlineSize: 0,
+          placeholder: '群聊ID',
+        }}
+      />
+    </View>
+    <View style={styles.findWrap}>
+      <View style={styles.findItem}>
+        <View style={styles.scanIcon}><Ionicons name="ios-qr-scanner" size={20} color="#fff" /></View>
+        <Text style={styles.findItemText}>扫一扫</Text>
+      </View>
+    </View>
+  </View>
+)
 
 export default class MailList extends React.Component {
   static navigationOptions = genNavigation(({ navigation }) => ({
     title: '查找',
     headerLeft: <Ionicons name="ios-arrow-back" size={25} color="#333" onPress={() => navigation.goBack()} style={{ marginLeft: 10 }} />,
-    headerRight: <Ionicons name="ios-person-add" size={25} color="#333" style={{ marginRight: 10 }} />,
     headerStyle: {
       borderBottomWidth: 0,
       shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+      shadowColor: 'rgba(0,0,0,0)',
     },
   }))
 
@@ -30,6 +77,7 @@ export default class MailList extends React.Component {
   render() {
     return (
       <TabView
+        style={styles.container}
         renderTabBar={(props) => {
           const inputRange = props.navigationState.routes.map((x, i) => i)
 
@@ -69,16 +117,15 @@ export default class MailList extends React.Component {
         navigationState={this.state}
         renderScene={({ route }) => {
             switch (route.key) {
-                case 'distillat':
-                    return <DistillatPosts {...this.props} />
-                case 'posts':
-                    return <Posts {...this.props} />
+                case 'findperson':
+                    return <FindPerson {...this.props} />
+                case 'findgroup':
+                    return <FindGroup {...this.props} />
                 default:
                     return null
             }
         }}
         onIndexChange={index => this.setState({ index })}
-        style={{ flex: 1 }}
       />
     )
   }

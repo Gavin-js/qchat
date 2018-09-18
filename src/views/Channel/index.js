@@ -16,6 +16,9 @@ export default class MailList extends React.Component {
     headerStyle: {
       borderBottomWidth: 0,
       shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+      shadowColor: 'rgba(0,0,0,0)',
     },
   }))
 

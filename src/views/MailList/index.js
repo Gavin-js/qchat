@@ -13,10 +13,13 @@ export default class MailList extends React.Component {
   static navigationOptions = genNavigation(({ navigation }) => ({
     title: '好友',
     headerLeft: <Ionicons name="ios-arrow-back" size={25} color="#333" onPress={() => navigation.goBack()} style={{ marginLeft: 10 }} />,
-    headerRight: <Ionicons name="ios-person-add" size={25} color="#333" style={{ marginRight: 10 }} />,
+    headerRight: <Ionicons name="ios-person-add" size={25} color="#333" onPress={() => navigation.navigate('Find')} style={{ marginRight: 10 }} />,
     headerStyle: {
       borderBottomWidth: 0,
       shadowOpacity: 0,
+      shadowRadius: 0,
+      elevation: 0,
+      shadowColor: 'rgba(0,0,0,0)',
     },
   }))
 

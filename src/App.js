@@ -1,39 +1,42 @@
 import React from 'react'
-import { Provider, connect } from 'react-redux'
-import thunk from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
-import {
-  reduxifyNavigator,
-  createReactNavigationReduxMiddleware,
-} from 'react-navigation-redux-helpers'
-import { logger } from 'redux-logger'
-import AppReducer from './reducers'
-import Router from './Router'
+import { BackHandler, ToastAndroid } from 'react-native'
+import { connect } from 'react-redux'
 
+class AppNavigator extends React.Component {
+  constructor() {
+    super()
+    this.lastBackPressed = false
+  }
 
-const middleware = createReactNavigationReduxMiddleware(
-  'root',
-  state => state.state
-)
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid)
+  }
 
-const store = createStore(AppReducer, applyMiddleware(middleware, thunk, logger))
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid)
+  }
 
-
-const AppWithNavigationState = reduxifyNavigator(Router, 'root')
-
-
-const AppNavigator = connect(state => ({
-  state: state.state,
-}))(AppWithNavigationState)
-
-class Root extends React.Component {
+  onBackAndroid = () => {
+    const { nav, dispatch } = this.props
+    const { routes } = nav
+    const { routeName } = routes[routes.length - 1]
+    if (routeName != 'Home' && routeName != 'Login') {
+      dispatch({ type: 'Navigation/BACK' })
+    } else {
+      if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+        return false
+      }
+      this.lastBackPressed = Date.now()
+      ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT)
+    }
+    return true
+  }
   render() {
-    return (
-      <Provider store={store}>
-        <AppNavigator />
-      </Provider>
-    )
+    const { children } = this.props
+    return children
   }
 }
+export default connect(state => ({
+  state: state.state,
+}))(AppNavigator)
 
-export default Root

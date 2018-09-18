@@ -9,7 +9,7 @@ class PageComponent extends Component {
     static navigationOptions = genNavigation(({ navigation }) => ({
       title: '消息',
       headerLeft: <Ionicons name="ios-people" size={25} onPress={() => navigation.navigate('MailList')} color="#333" style={{ marginLeft: 10 }} />,
-      headerRight: <Ionicons name="ios-add" size={28} color="#333" style={{ marginRight: 10 }} />,
+      headerRight: <Ionicons name="ios-add" size={28} onPress={() => navigation.navigate('Find')} color="#333" style={{ marginRight: 10 }} />,
     }))
     onWillBlur = () => {
       console.log('will blur')

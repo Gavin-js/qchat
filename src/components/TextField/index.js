@@ -33,6 +33,7 @@ class TextField extends React.Component {
       label,
       wrapperStyle,
       addon,
+      sufix,
       inputStyles,
       height = 76,
       ripple = true,
@@ -47,6 +48,11 @@ class TextField extends React.Component {
         {addon ? (
           <View style={[style2pt({ height }), styles.addon, styles.addonAfter]}>
             {addon}
+          </View>
+        ) : null}
+        {sufix ? (
+          <View style={[style2pt({ height }), styles.addon, styles.addonBefore]}>
+            {sufix}
           </View>
         ) : null}
         {iconSource ? (
