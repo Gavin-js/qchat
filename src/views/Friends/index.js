@@ -25,12 +25,12 @@ class PageComponent extends Component {
           <View style={styles.friends}>
             <TouchableOpacity
               style={styles.friendItem}
-              onPress={() => navigation.navigate('Chat', { uid: 'Q聊官方' })}
+              onPress={() => navigation.navigate('Chat', { uid: '猿趴官方' })}
             >
               <View style={styles.imageWrap}>
                 <Image style={styles.image} source={require('../../assets/qchat.png')} />
               </View>
-              <Text style={styles.friendTitle}>Q聊官方</Text>
+              <Text style={styles.friendTitle}>猿趴官方</Text>
             </TouchableOpacity>
           </View>
         </View>

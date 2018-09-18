@@ -1,4 +1,4 @@
-rootProject.name = 'Qchat'
+rootProject.name = 'Apes'
 include ':app', ':aurora-imui-react-native'
 project(':aurora-imui-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/aurora-imui-react-native/ReactNative/android')
 include ':react-native-fs'

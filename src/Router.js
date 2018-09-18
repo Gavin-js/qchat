@@ -50,7 +50,7 @@ const RootStack = createBottomTabNavigator({
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
       return {
-        tabBarLabel: 'Q聊',
+        tabBarLabel: '猿趴',
         tabBarVisible: routeName === 'Home',
       }
     },

@@ -17,18 +17,16 @@ class AppNavigator extends React.Component {
   }
 
   onBackAndroid = () => {
-    const { nav, dispatch } = this.props
-    const { routes } = nav
-    const { routeName } = routes[routes.length - 1]
-    if (routeName != 'Home' && routeName != 'Login') {
-      dispatch({ type: 'Navigation/BACK' })
-    } else {
+    const { state, dispatch } = this.props
+    if (state.index === 0) {
       if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
         return false
       }
       this.lastBackPressed = Date.now()
       ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT)
     }
+
+    dispatch({ type: 'Navigation/BACK' })
     return true
   }
   render() {

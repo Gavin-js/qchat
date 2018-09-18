@@ -1,8 +1,9 @@
 
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { MessageList, ChatInput, AuroraIMUIController } from 'aurora-imui-react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { SafeAreaView } from 'react-navigation'
 import { style2pt, genNavigation } from '../../utils'
 
 class Chat extends React.Component {
@@ -59,7 +60,7 @@ class Chat extends React.Component {
     render() {
       const { chatInputHeight } = this.state
       return (
-        <View style={styles.container}>
+        <SafeAreaView forceInset={{ bottom: 15 }} style={styles.container}>
           <MessageList
             style={styles.messageList}
             isShowDisplayName={false}
@@ -81,7 +82,7 @@ class Chat extends React.Component {
                     })
                 }}
           />
-        </View>
+        </SafeAreaView>
       )
     }
 }

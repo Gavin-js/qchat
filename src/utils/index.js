@@ -45,6 +45,8 @@ const NavigationOptions = {
     shadowColor: 'rgba(0,0,0,0.1)',
     elevation: 0,
     shadowOpacity: 0,
+    borderBottomColor: '#d8d8d8',
+    borderBottomWidth: 0.5,
   }),
   headerTintColor: '#333',
   headerTitleStyle: style2pt({

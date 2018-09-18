@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, TouchableOpacity, Animated } from 'react-native'
 import { TabView } from 'react-native-tab-view'
+import { SafeAreaView } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { genNavigation, Color } from '../../utils'
 import DistillatPosts from '../DistillatPosts'
@@ -32,8 +33,9 @@ export default class MailList extends React.Component {
 
   render() {
     return (
-      <TabView
-        renderTabBar={(props) => {
+      <SafeAreaView style={styles.container} forceInset={{ top: 20 }}>
+        <TabView
+          renderTabBar={(props) => {
           const inputRange = props.navigationState.routes.map((x, i) => i)
 
           return (
@@ -69,8 +71,8 @@ export default class MailList extends React.Component {
             </View>
 )
         }}
-        navigationState={this.state}
-        renderScene={({ route }) => {
+          navigationState={this.state}
+          renderScene={({ route }) => {
             switch (route.key) {
                 case 'distillat':
                     return <DistillatPosts {...this.props} />
@@ -80,9 +82,10 @@ export default class MailList extends React.Component {
                     return null
             }
         }}
-        onIndexChange={index => this.setState({ index })}
-        style={{ flex: 1 }}
-      />
+          onIndexChange={index => this.setState({ index })}
+          style={{ flex: 1 }}
+        />
+      </SafeAreaView>
     )
   }
 }

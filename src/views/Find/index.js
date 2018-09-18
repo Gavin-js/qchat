@@ -15,7 +15,7 @@ const FindPerson = () => (
         inputProps={{
           underlineEnabled: false,
           underlineSize: 0,
-          placeholder: 'Q聊ID',
+          placeholder: '猿趴ID',
         }}
       />
     </View>

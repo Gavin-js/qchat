@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { TextInput, Text, View, Image, ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Container, StatusBar } from '../../components'
 import { genNavigation, Color } from '../../utils'
@@ -19,7 +20,7 @@ class PageComponent extends Component {
     }
     render() {
       return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }} forceInset={{ bottom: 15 }}>
           <ScrollView style={styles.container}>
             <StatusBar.Dark />
             <View style={styles.article}>
@@ -131,7 +132,7 @@ class PageComponent extends Component {
               <Ionicons name="ios-thumbs-up" size={25} color="#999" style={styles.fixedButton} />
             </View>
           </View>
-        </View>
+        </SafeAreaView>
       )
     }
 }

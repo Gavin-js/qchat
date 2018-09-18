@@ -25,14 +25,14 @@ class PageComponent extends Component {
           <View style={styles.fans}>
             <TouchableOpacity
               style={styles.fanItem}
-              onPress={() => navigation.navigate('Chat', { uid: 'Q聊官方' })}
+              onPress={() => navigation.navigate('Chat', { uid: '猿趴官方' })}
             >
               <View style={styles.imageWrap}>
                 <Image style={styles.image} source={require('../../assets/qchat.png')} />
               </View>
               <View style={styles.fanCon}>
-                <Text style={styles.fanTitle}>Q聊官方</Text>
-                <Text style={styles.fanDesc}>欢迎来到Q聊</Text>
+                <Text style={styles.fanTitle}>猿趴官方</Text>
+                <Text style={styles.fanDesc}>欢迎来到猿趴</Text>
               </View>
             </TouchableOpacity>
           </View>
