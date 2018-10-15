@@ -21,7 +21,8 @@
     "push:ap": "code-push release-react qianzhuo/gene-android android --des '体验优化' -d Production",
     "push:ip": "code-push release-react qianzhuo/gene-ios ios --des '体验优化' -d Production",
     "prettier": "prettier --write 'src/**/*.js' ",
-    "lint": "eslint --fix src/**"
+    "lint": "eslint --fix src/**",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "src/**/*.js": [
