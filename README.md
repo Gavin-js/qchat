@@ -10,6 +10,7 @@
   react-native run android
 ```
 ### Screenshot
+<img src="./screenshot1.jpg" width="375" />
 ![./screenshot1.jpg](./screenshot1.jpg)
 ![./screenshot2.jpg](./screenshot2.jpg)
 ![./screenshot3.jpg](./screenshot3.jpg)
