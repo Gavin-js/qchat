@@ -9,3 +9,6 @@
 ``` javascript
   react-native run android
 ```
+### Note
+
+解决MUI某些设备不能全屏问题
