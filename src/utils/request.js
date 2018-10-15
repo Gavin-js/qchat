@@ -56,9 +56,9 @@ const _fetch = (fetchPromise, timeout) => {
 
 const request = async ({ url, method = 'POST', data = {}, headers = {} }) => {
   const prefix = {
-    dev: 'https://devgene.btcbing.com',
-    test: 'https://tstgene.btcbing.com',
-    release: 'https://gene.btcbing.com',
+    dev: 'https://dev.yuanpa.club',
+    test: 'https://test.yuanpa.club',
+    release: 'https://www.yuanpa.club',
   }
 
   const env = await getEnv()
